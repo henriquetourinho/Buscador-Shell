@@ -7,6 +7,7 @@ O **Buscador Shell** é um script em Shell robusto e eficiente que permite a bus
 - Busca de arquivos por nome ou extensão.
 - Pesquisa em diretórios específicos ou em todo o sistema.
 - Detecta automaticamente dispositivos montados, como pendrives e smartphones, e realiza buscas neles.
+- Suporte completo para todos os filtros e opções do comando `find`.
 - Fácil de usar, com opções de linha de comando claras e intuitivas.
 
 ---
@@ -22,7 +23,7 @@ Para utilizar o **Buscador Shell**, você precisa:
 ## Instalação
 1. Clone este repositório ou baixe o script diretamente:
    ```bash
-   git clone https://github.com/henriquetourinho/buscador-shell.git
+   git clone https://github.com/seuusuario/buscador-shell.git
    cd buscador-shell
    ```
 2. Dê permissão de execução ao script:
@@ -41,27 +42,47 @@ Execute o script com as opções desejadas:
 - `-n <nome>`: Nome parcial ou completo do arquivo para buscar.
 - `-e <extensão>`: Extensão dos arquivos para buscar (ex: `.txt`, `.jpg`).
 - `-d <diretório>`: Diretório inicial para busca (padrão: `/`).
+- `-type`: Define o tipo de arquivo para buscar (`f` para arquivos, `d` para diretórios).
+- `-size`: Busca arquivos com tamanho específico (ex: `+10M` para maiores que 10MB).
+- `-mtime`: Busca arquivos modificados em um intervalo de dias (ex: `-mtime -7` para últimos 7 dias).
+- `-perm`: Busca arquivos com permissões específicas (ex: `-perm 644`).
+- `-exec`: Executa um comando em cada arquivo encontrado.
 - `-h`: Exibe a ajuda e explica as opções.
 
 ### Exemplos
 1. Buscar arquivos contendo "documento" no nome:
    ```bash
-   ./buscador_shell.sh -n "documento"
+   ./busca_arquivos.sh -n "documento"
    ```
 
 2. Buscar arquivos com extensão `.jpg`:
    ```bash
-   ./buscador_shell.sh -e ".jpg"
+   ./busca_arquivos.sh -e ".jpg"
    ```
 
 3. Buscar arquivos `.txt` no diretório `/home`:
    ```bash
-   ./buscador_shell.sh -e ".txt" -d "/home"
+   ./busca_arquivos.sh -e ".txt" -d "/home"
    ```
 
-4. Exibir a ajuda do script:
+4. Buscar diretórios apenas:
    ```bash
-   ./buscador_shell.sh -h
+   ./busca_arquivos.sh -type d
+   ```
+
+5. Buscar arquivos maiores que 100MB:
+   ```bash
+   ./busca_arquivos.sh -size +100M
+   ```
+
+6. Buscar arquivos modificados nos últimos 30 dias:
+   ```bash
+   ./busca_arquivos.sh -mtime -30
+   ```
+
+7. Exibir a ajuda do script:
+   ```bash
+   ./busca_arquivos.sh -h
    ```
 
 ---
@@ -69,7 +90,7 @@ Execute o script com as opções desejadas:
 ## Como Funciona
 1. O script utiliza o comando `find` para realizar buscas recursivas baseadas nos parâmetros fornecidos.
 2. Além do diretório especificado, ele identifica dispositivos conectados (como pendrives e smartphones) através de pontos de montagem localizados em `/media`, `/mnt` ou `/run/media`.
-3. Para cada dispositivo ou diretório, ele executa a busca conforme os filtros definidos (nome e/ou extensão).
+3. Para cada dispositivo ou diretório, ele executa a busca conforme os filtros definidos (nome, extensão, tamanho, permissões, entre outros).
 
 ---
 
@@ -77,7 +98,7 @@ Execute o script com as opções desejadas:
 - Certifique-se de que dispositivos externos estejam montados para que possam ser incluídos na busca.
 - Para buscar em todo o sistema, execute o script como superusuário:
   ```bash
-  sudo ./buscador_shell.sh -n "arquivo"
+  sudo ./busca_arquivos.sh -n "arquivo"
   ```
 - A busca pode demorar dependendo do tamanho do sistema de arquivos ou dos dispositivos conectados.
 
