@@ -14,8 +14,8 @@ O **Buscador Shell** é um script em Shell robusto e eficiente que permite a bus
 
 ## Requisitos
 Para utilizar o **Buscador Shell**, você precisa:
-- Sistema operacional Linux/Unix.
-- Ferramenta `find` (disponível na maioria das distribuições Linux).
+- Sistema operacional Linux, macOS ou Unix.
+- Ferramenta `find` (disponível na maioria dos sistemas baseados em Unix).
 - Permissão para executar comandos de busca (uso de `sudo` pode ser necessário para acessar todos os arquivos).
 
 ---
@@ -23,12 +23,12 @@ Para utilizar o **Buscador Shell**, você precisa:
 ## Instalação
 1. Clone este repositório ou baixe o script diretamente:
    ```bash
-   git clone https://github.com/seuusuario/buscador-shell.git
+   git clone https://github.com/henriquetourinho/buscador-shell.git
    cd buscador-shell
    ```
 2. Dê permissão de execução ao script:
    ```bash
-   chmod +x busca_arquivos.sh
+   chmod +x buscador_shell.sh
    ```
 
 ---
@@ -36,7 +36,7 @@ Para utilizar o **Buscador Shell**, você precisa:
 ## Uso
 Execute o script com as opções desejadas:
 ```bash
-./busca_arquivos.sh [opções]
+./buscador_shell.sh [opções]
 ```
 ### Opções Disponíveis
 - `-n <nome>`: Nome parcial ou completo do arquivo para buscar.
@@ -52,37 +52,52 @@ Execute o script com as opções desejadas:
 ### Exemplos
 1. Buscar arquivos contendo "documento" no nome:
    ```bash
-   ./busca_arquivos.sh -n "documento"
+   ./buscador_shell.sh -n "documento"
    ```
 
 2. Buscar arquivos com extensão `.jpg`:
    ```bash
-   ./busca_arquivos.sh -e ".jpg"
+   ./buscador_shell.sh -e ".jpg"
    ```
 
 3. Buscar arquivos `.txt` no diretório `/home`:
    ```bash
-   ./busca_arquivos.sh -e ".txt" -d "/home"
+   ./buscador_shell.sh -e ".txt" -d "/home"
    ```
 
 4. Buscar diretórios apenas:
    ```bash
-   ./busca_arquivos.sh -type d
+   ./buscador_shell.sh -type d
    ```
 
 5. Buscar arquivos maiores que 100MB:
    ```bash
-   ./busca_arquivos.sh -size +100M
+   ./buscador_shell.sh -size +100M
    ```
 
 6. Buscar arquivos modificados nos últimos 30 dias:
    ```bash
-   ./busca_arquivos.sh -mtime -30
+   ./buscador_shell.sh -mtime -30
    ```
 
 7. Exibir a ajuda do script:
    ```bash
-   ./busca_arquivos.sh -h
+   ./buscador_shell.sh -h
+   ```
+
+---
+
+## Como Usar no Linux, macOS ou Unix
+1. Certifique-se de que o script foi instalado e que você possui permissões de execução.
+2. Abra o terminal do seu sistema operacional.
+3. Navegue até o diretório onde o script foi baixado ou clonado.
+   ```bash
+   cd /caminho/para/buscador-shell
+   ```
+4. Execute o script com as opções desejadas (veja os exemplos acima).
+5. Para sistemas que exigem permissões de superusuário para acessar determinados arquivos, use o comando com `sudo`.
+   ```bash
+   sudo ./buscador_shell.sh -n "arquivo"
    ```
 
 ---
@@ -98,7 +113,7 @@ Execute o script com as opções desejadas:
 - Certifique-se de que dispositivos externos estejam montados para que possam ser incluídos na busca.
 - Para buscar em todo o sistema, execute o script como superusuário:
   ```bash
-  sudo ./busca_arquivos.sh -n "arquivo"
+  sudo ./buscador_shell.sh -n "arquivo"
   ```
 - A busca pode demorar dependendo do tamanho do sistema de arquivos ou dos dispositivos conectados.
 
